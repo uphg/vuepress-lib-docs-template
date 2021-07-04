@@ -1,3 +1,3 @@
-## Tulip UI 文档
+## vuepress-lib-docs-template
 
-生成 Tulip 组件库的说明文档
+与 VuePress 默认风格有些不同的文档。

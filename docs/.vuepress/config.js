@@ -2,10 +2,10 @@ var nav = require("./navbar/index")
 var sidebar = require("./sidebar/index")
 
 module.exports = {
-  base: '/tulip/',
+  base: '/vuepress-lib-docs-template/',
   lang: 'zh-CN',
-  title: 'Tulip',
-  description: '一个简洁的 Vue UI 组件库',
+  title: 'Lib Docs',
+  description: '一个简洁的 VuePress 文档',
   head: [
     ['link', {rel: 'stylesheet', href: '/font/index.css'}],
     ['script', { src: '/icon/svg.js' }]
