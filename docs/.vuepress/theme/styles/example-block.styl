@@ -1,0 +1,26 @@
+.tulp-example-block
+  border 1px solid #eaecef
+  border-radius 6px
+  transition border-color 0.3s
+  position relative
+  z-index 1
+  margin 1em 0
+  &__header
+    padding 1.8rem
+    & > *:first-child
+      margin-top 0
+    & > *:last-child
+      margin-bottom 0
+  &__content
+    overflow hidden
+    height 0
+    transition height .2s
+    background-color #fafafa
+    & > div[class*="language-"]
+      border-radius 0
+      border-top 1px solid #eaecef
+    & > div[class*="language-"] > pre[class*="language-"]
+      border none
+      margin 0
+  &:hover
+    border-color #C0C4CC
