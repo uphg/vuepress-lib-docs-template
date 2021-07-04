@@ -158,7 +158,12 @@ $iconUrl = '/vuepress-lib-docs-template'
     color $accentColor
 
 #app
+  box-sizing border-box
+  padding-top $navbarHeight
   height 100vh
+
+#app > .tulp-scrollbar > .scrollbar-wrapper
+  scroll-behavior: smooth;
 
 .home .theme-default-content
   min-height: 0

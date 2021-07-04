@@ -99,7 +99,6 @@ export default {
   methods: {
     handleScroll() {
       const wrap = this.wrap;
-
       this.moveY = ((wrap.scrollTop * 100) / wrap.clientHeight);
       this.moveX = ((wrap.scrollLeft * 100) / wrap.clientWidth);
     },

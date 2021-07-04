@@ -39,7 +39,18 @@ export default {
   },
 
   methods: {
+    // 关闭平滑滚动
+    closeBehavior() {
+      this.wrap.style.scrollBehavior = 'auto'
+    },
+
+    // 打开平滑滚动
+    openBehavior() {
+      this.wrap.style.scrollBehavior = ''
+    },
+
     clickThumbHandler(e) {
+      this.closeBehavior()
       // prevent click event of right button
       if (e.ctrlKey || e.button === 2) {
         return;
@@ -49,6 +60,7 @@ export default {
     },
 
     clickTrackHandler(e) {
+      this.closeBehavior()
       const offset = Math.abs(e.target.getBoundingClientRect()[this.bar.direction] - e[this.bar.client]);
       const thumbHalf = (this.$refs.thumb[this.bar.offset] / 2);
       const thumbPositionPercentage = ((offset - thumbHalf) * 100 / this.$el[this.bar.offset]);
@@ -66,6 +78,7 @@ export default {
     },
 
     mouseMoveDocumentHandler(e) {
+      this.closeBehavior()
       if (this.cursorDown === false) return;
       const prevPage = this[this.bar.axis];
 
@@ -83,6 +96,7 @@ export default {
       this[this.bar.axis] = 0;
       off(document, 'mousemove', this.mouseMoveDocumentHandler);
       document.onselectstart = null;
+      this.$nextTick(() => this.openBehavior)
     }
   },
 

@@ -2,9 +2,6 @@
 title: "API 语法"
 ---
 
-
-# API
-
 ## 这是一个h2 xxx
 
 The Vue.js API contains the following categories:

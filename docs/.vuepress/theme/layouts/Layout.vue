@@ -7,7 +7,6 @@
       @touchend="onTouchEnd"
     >
       <Navbar
-        :class="[navClass]"
         v-if="shouldShowNavbar"
         @toggle-sidebar="toggleSidebar"
       />
@@ -45,9 +44,12 @@ import Page from '@theme/components/Page.vue'
 // import Synopsis from '@theme/components/Synopsis.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '../util'
+import activeHeaderLinks from '../mixins/active-header-links'
 
 export default {
   name: 'Layout',
+
+  mixins: [activeHeaderLinks],
 
   components: {
     Home,
@@ -60,11 +62,11 @@ export default {
   data() {
     return {
       isSidebarOpen: false,
-      navClass: '', // 导航栏滚动附加class
-      scroll: {     // 存储window滚动变量
-        before: 0,
-        current: 0,
-      }
+      // navClass: '', // 导航栏滚动附加class
+      // scroll: {     // 存储window滚动变量
+      //   before: 0,
+      //   current: 0,
+      // }
     }
   },
 
@@ -123,7 +125,7 @@ export default {
     },
 
     scrollbar() {
-      return this.$el.querySelector('.tulp-scrollbar__wrap')
+      return this.$el.querySelector('#app > .tulp-scrollbar > .tulp-scrollbar__wrap')
     }
   },
 
@@ -131,8 +133,7 @@ export default {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
     })
-    this.initNav()
-    this.scrollTo(location.hash)
+    this.initScrollTo()
   },
 
   methods: {
@@ -161,10 +162,18 @@ export default {
       }
     },
 
+    initScrollTo() {
+      this.closeBehavior()
+      this.scrollTo(location.hash)
+      this.$nextTick(this.openBehavior)
+    },
+
     // 修复页面不会自动跳转锚点的 bug
     scrollTo(selector) {
       if (!selector || selector === '#') {
+        this.closeBehavior()
         this.scrollbar.scrollTo(0, 0)
+        this.$nextTick(this.openBehavior)
         return
       }
       const el = document.querySelector(decodeURIComponent(selector))
@@ -173,40 +182,48 @@ export default {
       }
     },
 
-    // 监听 window 窗口滚动事件
-    initNav() {
-      this.scrollbar.addEventListener('scroll', this.windowScroll)
+    closeBehavior() {
+      this.scrollbar.style.scrollBehavior = 'auto'
     },
 
-    // 窗口滚动时执行函数
-    windowScroll() {
-      let searchInput = document.querySelector(".search-box input[aria-label='Search']")
-      // 判断input搜索框是否获得焦点，获得焦点不滚动
-      if (document.activeElement !== searchInput) {
-         // this.scroll.current = document.documentElement.scrollTop || document.body.srcollTop;
-        this.scroll.current = this.scrollbar.scrollTop;
-        // 判断滚动方向
-        if (this.scroll.before < this.scroll.current) {
-          this.navClass = 'nav-down'
-        } else {
-          this.navClass = 'nav-up'
-        }
-        this.scroll.before = this.scroll.current
-      }
-    }
+    openBehavior() {
+      this.scrollbar.style.scrollBehavior = ''
+    },
+
+    // 监听 window 窗口滚动事件
+    // initNav() {
+    //   this.scrollbar.addEventListener('scroll', this.windowScroll)
+    // },
+
+    // // 窗口滚动时执行函数
+    // windowScroll() {
+    //   let searchInput = document.querySelector(".search-box input[aria-label='Search']")
+    //   // 判断input搜索框是否获得焦点，获得焦点不滚动
+    //   if (document.activeElement !== searchInput) {
+    //      // this.scroll.current = document.documentElement.scrollTop || document.body.srcollTop;
+    //     this.scroll.current = this.scrollbar.scrollTop;
+    //     // 判断滚动方向
+    //     if (this.scroll.before < this.scroll.current) {
+    //       this.navClass = 'nav-down'
+    //     } else {
+    //       this.navClass = 'nav-up'
+    //     }
+    //     this.scroll.before = this.scroll.current
+    //   }
+    // }
   }
 }
 </script>
 <style lang="stylus">
-// 导航栏向下滚动
-.nav-down {
-  transition: top 0.3s;
-  top: -3.6rem;
-}
+// // 导航栏向下滚动
+// .nav-down {
+//   transition: top 0.3s;
+//   top: -3.6rem;
+// }
 
-// 导航栏向上滚动
-.nav-up {
-  transition: top 0.3s;
-  top: 0;
-}
+// // 导航栏向上滚动
+// .nav-up {
+//   transition: top 0.3s;
+//   top: 0;
+// }
 </style>

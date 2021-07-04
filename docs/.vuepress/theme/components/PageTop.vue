@@ -57,110 +57,28 @@ export default {
 };
 </script>
 <style lang="stylus">
-$defaultLinkColor = #333333;
-$pageArrowSize = 12px;
+$paddingTop = 3.6rem
+$paddingBottom = 0
 .re-page-top {
-  padding: 5.5rem 40px 1.6rem;
+  padding: $paddingTop 40px $paddingBottom;
   max-width: $contentWidth;
-  margin: 0 auto -3.5rem;
+  margin: 0 auto -24px;
   h2.title {
     margin: 0;
     font-size 2.2rem
   }
 }
 
-// .re-page-index {
-//   margin-top: 2rem;
-//   // border 1px solid #cfd4db
-//   // border: 1px solid #e7e6e6;
-//   position: relative;
-//   z-index: 1;
-//   // background-color: #fafafa;
-//   background-color #f8f8f8
-//   &.hide-index {
-//     display: none;
-//   }
-// }
-
-// .page-index-title {
-//   color: #363636;
-//   padding: calc(1.6em - 3px) 1.6em;
-//   cursor: pointer;
-//   &:hover {
-//     .open-catalog {
-//       color: $accentColor;
-//     }
-//   }
-// }
-
-// /* 组件显示/隐藏过渡 */
-// .fade-enter-active, .fade-leave-active {
-//   transition: opacity 0.16s ease-out;
-// }
-
-// .fade-enter, .fade-leave-to {
-//   opacity: 0;
-// }
-
-// .page-catalog {
-//   color: #6a737d;
-//   padding: 0 1.6em calc(1.6em - 3px);
-
-//   .synopsis-ul {
-//     margin: 0;
-//     line-height: 2;
-//   }
-
-//   .synopsis-link {
-//     color: $defaultLinkColor;
-//     transition: color 0.2s;
-//     border-bottom: 1px solid transparent;
-
-//     &:hover {
-//       color: $accentColor;
-//       border-bottom-color: $accentColor;
-//     }
-//   }
-// }
-
-// .open-catalog {
-//   transition: all 0.5s;
-//   align-self: flex-end;
-//   max-height: 18px;
-//   font-size: 15px;
-//   margin-right: 3px;
-//   display: flex;
-//   align-items: center;
-
-//   svg {
-//     margin-top: 1px;
-//     width: $pageArrowSize;
-//     height: $pageArrowSize;
-//     fill: currentColor;
-//   }
-// }
-
-// .arrow-right {
-//   margin-right: 5px;
-//   width: 10px;
-//   height: 10px;
-//   transition: transform 0.16s ease-out;
-
-//   &.show {
-//     transform: rotate(90deg);
-//   }
-// }
-
 @media (max-width: $MQNarrow) {
   .re-page-top {
-    padding: 5.5rem 32px 1.6rem;
+    padding: $paddingTop 32px $paddingBottom;
   }
 }
 
 // wide mobile
 @media (max-width: $MQMobile) {
   .re-page-top {
-    padding: 5.5rem 24px 1.6rem;
+    padding: $paddingTop 24px $paddingBottom;
   }
 }
 </style>
