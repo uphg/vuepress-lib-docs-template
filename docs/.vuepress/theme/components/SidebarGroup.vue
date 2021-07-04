@@ -20,19 +20,12 @@
       @click.native="$emit('toggle')"
     >
       <span>{{ item.title }}</span>
-      <!-- <span
-        v-if="collapsable"
-        class="arrow"
-        :class="open ? 'down' : 'right'"
-      /> -->
-      <svg
+      <ChevronBlodRight
         v-if="collapsable"
         class="icon arrow"
         :class="{down: open}"
         aria-hidden="true"
-      >
-        <use xlink:href="#icon-bold-right"></use>
-      </svg>
+       />
     </RouterLink>
 
     <p
@@ -42,19 +35,12 @@
       @click="$emit('toggle')"
     >
       <span>{{ item.title }}</span>
-      <!-- <span
-        v-if="collapsable"
-        class="arrow"
-        :class="open ? 'down' : 'right'"
-      /> -->
-      <svg
+      <ChevronBlodRight
         v-if="collapsable"
         class="icon arrow"
         :class="{down: open}"
         aria-hidden="true"
-      >
-        <use xlink:href="#icon-bold-right"></use>
-      </svg>
+       />
     </p>
 
     <DropdownTransition>
@@ -72,11 +58,13 @@
 <script>
 import { isActive } from '../util'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import ChevronBlodRight from './icon/ChevronBlodRight.vue'
 
 export default {
   name: 'SidebarGroup',
 
   components: {
+    ChevronBlodRight,
     DropdownTransition
   },
 

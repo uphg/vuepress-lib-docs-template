@@ -8,18 +8,17 @@ module.exports = {
   description: '一个简洁的 VuePress 文档',
   head: [
     ['link', {rel: 'stylesheet', href: '/font/index.css'}],
-    ['script', { src: '/icon/svg.js' }]
   ],
   themeConfig: {
     searchMaxSuggestions: 10,
     // smoothScroll: true, // 开启平滑滚动
     nav,
     lastUpdated: '上次更新',
-    sidebarDepth: 0,
+    sidebarDepth: 2,
     sidebar,
   },
   plugins: [
-    ['@vuepress/back-to-top'],
+    // ['@vuepress/back-to-top'],
     [
       'vuepress-plugin-zooming',
       {
@@ -31,11 +30,11 @@ module.exports = {
         },
       },
     ],
-    ['@vuepress/active-header-links',
-      {
-        sidebarLinkSelector: '.page-catalog a'
-      }
-    ],
+    // ['@vuepress/active-header-links',
+    //   {
+    //     sidebarLinkSelector: '.page-catalog a'
+    //   }
+    // ],
     [
       '@vuepress/pwa',
       {

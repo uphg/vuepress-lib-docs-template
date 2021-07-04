@@ -2,9 +2,7 @@
   <div v-if="prev || next" class="page-nav">
     <p class="inner">
       <span v-if="prev" class="prev">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-left"></use>
-        </svg>
+        <ChevronLeft class="icon" />
         <a
           v-if="prev.type === 'external'"
           class="prev"
@@ -35,9 +33,7 @@
         <RouterLink v-else :to="next.path">{{
           next.title || next.path
         }}</RouterLink>
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-right"></use>
-        </svg>
+        <ChevronRight class="icon" />
       </span>
     </p>
   </div>
@@ -47,9 +43,13 @@
 import { resolvePage } from '../util'
 import isString from 'lodash/isString'
 import isNil from 'lodash/isNil'
+import ChevronLeft from './icon/ChevronLeft.vue'
+import ChevronRight from './icon/ChevronRight.vue'
 
 export default {
   name: 'PageNav',
+
+  components: { ChevronLeft, ChevronRight },
 
   props: ['sidebarItems'],
 

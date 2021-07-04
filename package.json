@@ -8,11 +8,9 @@
     "build": "vuepress build docs"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.7.1",
     "@vuepress/plugin-pwa": "^1.8.2",
     "resize-observer-polyfill": "^1.5.1",
     "vuepress": "^1.8.2",
-    "vuepress-plugin-comment": "^0.7.3",
     "vuepress-plugin-table-of-contents": "^1.1.7",
     "vuepress-plugin-zooming": "^1.1.8"
   },
